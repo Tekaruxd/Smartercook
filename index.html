@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartCook - Recepty</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>SmartCook</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Domů</a></li>
+                <li><a href="#">Zadat preference</a></li>
+                <li><a href="#">Vygenerované recepty</a></li>
+                <li><a href="#">Nákupní seznam</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="filters">
+            <h2>Filtry</h2>
+            <form id="filterForm">
+                <div class="filter-group">
+                    <label for="dishCategory">Druh pokrmu:</label>
+                    <select id="dishCategory" name="dishCategory">
+                        <option value="">Všechny</option>
+                        <!-- Doplnění možností pomocí JavaScriptu -->
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="recipeCategory">Kategorie receptu:</label>
+                    <select id="recipeCategory" name="recipeCategory">
+                        <option value="">Všechny</option>
+                        <!-- Doplnění možností pomocí JavaScriptu -->
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="difficulty">Náročnost:</label>
+                    <select id="difficulty" name="difficulty">
+                        <option value="">Nezáleží</option>
+                        <!-- Doplnění možností pomocí JavaScriptu -->
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="price">Cena:</label>
+                    <select id="price" name="price">
+                        <option value="">Nezáleží</option>
+                        <!-- Doplnění možností pomocí JavaScriptu -->
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="tolerance">Alergeny:</label>
+                    <select id="tolerance" name="tolerance">
+                        <option value="">Bez alergenů</option>
+                        <!-- Doplnění možností pomocí JavaScriptu -->
+                    </select>
+                </div>
+                <button type="submit">Filtrovat</button>
+            </form>
+        </section>
+        <section class="recipes">
+            <h2>Recepty</h2>
+            <div id="recipeList"></div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 SmartCook. Všechna práva vyhrazena.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
