@@ -5,7 +5,7 @@ body {
 }
 
 header {
-    background-color: #f0f0f0;
+    background-color: #0d7000c9;
     padding: 20px;
     text-align: center;
 }
@@ -27,6 +27,7 @@ nav ul li a {
 
 main {
     padding: 20px;
+    background-color: #d6d5d5;
 }
 
 .welcome {
@@ -39,3 +40,30 @@ footer {
     text-align: center;
     padding: 10px 0;
 }
+
+.filter-container {
+    margin-bottom: 20px;
+}
+  
+  .filter-label {
+    margin-right: 10px;
+}
+
+  .recipe {
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+}
+  
+  .recipe h3 {
+    margin-top: 0;
+    color: #333;
+}
+  
+  .recipe p {
+    margin-bottom: 0;
+    color: #666;
+}
+  

@@ -1,85 +1,110 @@
-document.addEventListener("DOMContentLoaded", function() {
-    fetch('recipes.json')
-        .then(response => response.json())
-        .then(data => {
-            const recipeName = document.getElementById('recipeName');
-            const recipeDescription = document.getElementById('recipeDescription');
-            const ingredientList = document.getElementById('ingredientList');
-
-            const recipe = data;
-            recipeName.textContent = recipe.name;
-            recipeDescription.textContent = recipe.description;
-
-            recipe.ingredient.forEach(ingredient => {
-                const listItem = document.createElement('li');
-                listItem.textContent = `${ingredient.quantity} ${ingredient.unit} ${ingredient.name}`;
-                ingredientList.appendChild(listItem);
-            });
+document.addEventListener("DOMContentLoaded", function () {
+    const recipeList = document.getElementById("recipeList");
+    const filterForm = document.getElementById("filterForm");
+    let filters = {}; // Objekt pro uchování načtených filtrů
+  
+    // Funkce pro načtení filtrů ze souboru filtry.json
+    function loadFilters() {
+      fetch("filtry.json")
+        .then((response) => response.json())
+        .then((data) => {
+          filters = data; // Uložení načtených filtrů do globální proměnné
+          // Aktualizace rozbalovacích seznamů s filtry
+          updateFilterSelects();
         })
-        .catch(error => console.log('Chyba při načítání receptu:', error));
-
-    const dishCategorySelect = document.getElementById('dishCategory');
-    const recipeCategorySelect = document.getElementById('recipeCategory');
-    const difficultySelect = document.getElementById('difficulty');
-    const priceSelect = document.getElementById('price');
-    const toleranceSelect = document.getElementById('tolerance');
-
-    const categories = {
-        "dish_category": {
-            "1": "Snídaně",
-            "2": "Polévka",
-            "3": "Hlavní chod",
-            "4": "Dezert",
-            "5": "Večeře"
-        },
-        "recipe_category": {
-            "1": "Polévka",
-            "2": "Maso",
-            "3": "Bezmasé jídlo",
-            "4": "Dezert",
-            "5": "Omáčka",
-            "6": "Těstoviny",
-            "7": "Salát",
-            "8": "Sladké jídlo",
-            "9": "Nápoj"
-        },
-        "difficulty": {
-            "1": "Jednoduché",
-            "2": "Středně náročné",
-            "3": "Náročné"
-        },
-        "price": {
-            "1": "Levné",
-            "2": "Střední",
-            "3": "Drahé"
-        },
-        "tolerance": {
-            "1": "Vegetariánské",
-            "2": "Veganské",
-            "3": "Ořechy",
-            "4": "Gluten",
-            "5": "Laktóza",
-            "6": "Koření",
-            "7": "Alkohol",
-            "8": "Mořské plody",
-            "9": "Houby"
-        }
-    };
-
-    // Funkce pro naplnění rozbalovacích seznamů
-    function populateSelect(selectElement, options) {
-        for (const key in options) {
-            const option = document.createElement('option');
-            option.value = key;
-            option.textContent = options[key];
-            selectElement.appendChild(option);
-        }
+        .catch((error) => console.log("Chyba při načítání filtrů:", error));
     }
-
-    // Naplnění rozbalovacích seznamů
-    populateSelect(dishCategorySelect, categories.dish_category);
-    populateSelect(recipeCategorySelect, categories.recipe_category);
-    populateSelect(difficultySelect, categories.difficulty);
-    populateSelect(priceSelect, categories.price);
-    populateSelect(toleranceSelect, categories.tolerance);
-});
+  
+    // Funkce pro aktualizaci rozbalovacích seznamů s filtry
+    function updateFilterSelects() {
+      for (const key in filters) {
+        const selectElement = document.getElementById(key);
+        selectElement.innerHTML = ""; // Vyprázdnění obsahu rozbalovacího seznamu
+  
+        // Přidání možností do rozbalovacího seznamu
+        const defaultOption = document.createElement("option");
+        defaultOption.value = "";
+        defaultOption.textContent = "Všechny";
+        selectElement.appendChild(defaultOption);
+  
+        // Přidání možností z načtených filtrů
+        for (const value in filters[key]) {
+          const option = document.createElement("option");
+          option.value = value;
+          option.textContent = filters[key][value];
+          selectElement.appendChild(option);
+        }
+      }
+    }
+  
+    // Funkce pro načtení receptů a jejich zobrazení
+    function displayRecipes() {
+      // Vyprázdnit seznam receptů před aktualizací
+      recipeList.innerHTML = "";
+  
+      // Načtení receptů z JSON souboru
+      fetch("recepty.json")
+        .then((response) => response.json())
+        .then((data) => {
+          // Filtrace receptů podle zvolených filtrů
+          const filteredRecipes = data.filter((recipe) => {
+            let includeRecipe = true; // Předpokládáme, že recept bude zahrnut
+  
+            for (const key in filters) {
+              if (filters[key] !== "" && key in recipe) {
+                // Pokud je klíč v receptu a nebyl vybrán prázdný filtr
+                if (Array.isArray(recipe[key])) {
+                  // Pokud se jedná o pole (např. recipe_category, tolerance), porovnáme hodnoty
+                  if (!recipe[key].includes(parseInt(filters[key]))) {
+                    // Pokud hodnota filtru není obsažena v poli receptu, vyloučíme recept
+                    includeRecipe = false;
+                    break;
+                  }
+                } else {
+                  // Pokud se nejedná o pole, porovnáme přímo hodnoty
+                  if (recipe[key] !== filters[key]) {
+                    // Pokud hodnoty nejsou shodné, vyloučíme recept
+                    includeRecipe = false;
+                    break;
+                  }
+                }
+              }
+            }
+            return includeRecipe;
+          });
+  
+          // Zobrazení filtrovaných receptů na stránce
+          filteredRecipes.forEach((recipe) => {
+            const recipeItem = document.createElement("div");
+            recipeItem.classList.add("recipe");
+            recipeItem.innerHTML = `
+                          <h3>${recipe.name}</h3>
+                          <p>${recipe.description}</p>
+                      `;
+            recipeList.appendChild(recipeItem);
+          });
+        })
+        .catch((error) => console.log("Chyba při načítání receptů:", error));
+    }
+  
+    // Obsluha formuláře pro filtrování
+    filterForm.addEventListener("submit", function (event) {
+      event.preventDefault(); // Zabránit výchozímu chování formuláře
+      // Načtení hodnot filtrů ze vstupů formuláře
+      filters = {
+        dish_category: dish_category.value,
+        recipe_category: recipe_category.value,
+        difficulty: difficulty.value,
+        price: price.value,
+        tolerance: tolerance.value,
+      };
+  
+      displayRecipes(); // Zobrazit recepty podle zvolených filtrů
+    });
+  
+    // Načtení filtrů ze souboru při načtení stránky
+    loadFilters();
+    // Načtení receptů při načtení stránky
+    displayRecipes(); // Zobrazit všechny recepty při prvním načtení stránky
+  });
+  
