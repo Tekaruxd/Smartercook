@@ -236,7 +236,7 @@
     "price": 1,
     "description": "Spread a thin layer of softened butter on one side of each bread slice. Place ham slices and cheese slices on the buttered side of the bread slice optionally add lettuce leaves.Press the sandwiches gently and cut them in half.",
     "country": "uk",
-    "dish_category": [4],
+    "dish_category": [5],
     "recipe_category": [2],
     "tolerance": [4,5],
     "ingredient": [
