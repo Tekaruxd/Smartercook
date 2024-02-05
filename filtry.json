@@ -1,41 +1,41 @@
 {
-  "dish_category": {
-    "1": "Snídaně",
-    "2": "Polévka",
-    "3": "Hlavní chod",
-    "4": "Dezert",
-    "5": "Večeře"
-  },
-  "recipe_category": {
-    "1": "Polévka",
-    "2": "Maso",
-    "3": "Bezmasé jídlo",
-    "4": "Dezert",
-    "5": "Omáčka",
-    "6": "Těstoviny",
-    "7": "Salát",
-    "8": "Sladké jídlo",
-    "9": "Nápoj"
-  },
-  "difficulty": {
-    "1": "Jednoduché",
-    "2": "Středně náročné",
-    "3": "Náročné"
-  },
-  "price": {
-    "1": "Levné",
-    "2": "Střední",
-    "3": "Drahé"
-  },
-  "tolerance": {
-    "1": "Vegetariánské",
-    "2": "Veganské",
-    "3": "Ořechy",
-    "4": "Gluten",
-    "5": "Laktóza",
-    "6": "Koření",
-    "7": "Alkohol",
-    "8": "Mořské plody",
-    "9": "Houby"
-  }
+	"dish_category": {
+		"1": "Snídaně",
+		"2": "Polévka",
+		"3": "Hlavní chod",
+		"4": "Dezert",
+		"5": "Večeře"
+	},
+	"recipe_category": {
+		"1": "Polévka",
+		"2": "Maso",
+		"3": "Bezmasé jídlo",
+		"4": "Dezert",
+		"5": "Omáčka",
+		"6": "Těstoviny",
+		"7": "Salát",
+		"8": "Sladké jídlo",
+		"9": "Nápoj"
+	},
+	"difficulty": {
+		"1": "Jednoduché",
+		"2": "Středně náročné",
+		"3": "Náročné"
+	},
+	"price": {
+		"1": "Levné",
+		"2": "Střední",
+		"3": "Drahé"
+	},
+	"tolerance": {
+		"1": "Vegetariánské",
+		"2": "Veganské",
+		"3": "Ořechy",
+		"4": "Gluten",
+		"5": "Laktóza",
+		"6": "Koření",
+		"7": "Alkohol",
+		"8": "Mořské plody",
+		"9": "Houby"
+	}
 }

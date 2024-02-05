@@ -1,282 +1,280 @@
 [
-
-  {
-    "id": "1",
-    "name": "water",
-    "difficulty": 1,
-    "duration": "1",
-    "price": 1,
-    "description": "test.",
-    "country": "xd",
-    "dish_category": [1],
-    "recipe_category": [1],
-    "tolerance": [1],
-    "ingredient": [
-        {
-          "id": "1",
-          "name": "water",
-          "quantity": 1,
-          "unit": "g",
-          "necessary": "1"
-        }
-      ]
-},
-  {
-    "id": "6",
-    "name": "crepes",
-    "difficulty": 1,
-    "duration": "30",
-    "price": 1,
-    "description": "In a blender, combine all-purpose flour, milk, eggs and salt until smooth. Let the batter rest for at least 10 minutes Heat a crepe pan over medium heat. Lightly grease with butter. Pour a small amount of batter into the center of the pan, swirling it to spread thinly and evenly. Cook for about 1-2 minutes until the edges start to lift and the bottom is golden brown. Flip and cook the other side briefly. Repeat with the remaining batter, stacking cooked crepes on a plate. Fill crepes with your favorite sweet or savory toppings, fold or roll, and serve warm.",
-    "country": "fr",
-    "dish_category": [4],
-    "recipe_category": [8],
-    "tolerance": [4,5],
-    "ingredient": [
-        {
-          "id": "19",
-          "name": "all-purpose flour",
-          "quantity": 100,
-          "unit": "g",
-          "necessary": "1"
-        },
-        {
-            "id": "16",
-            "name": "egg",
-            "quantity": 1,
-            "unit": "pc",
-            "necessary": "1"
-        },
-        {
-          "id": "3",
-          "name": "banana",
-          "quantity": 0.5,
-          "unit": "pc",
-          "necessary": "0"
-        },
-        {
-        "id": "4",
-        "name": "milk",
-        "quantity": 0.200,
-        "unit": "l",
-        "necessary": "1"
-        },
-        {
-            "id": "14",
-            "name": "salt",
-            "quantity": 0.5,
-            "unit": "g",
-            "necessary": "1"
-        },
-        {
-            "id": "20",
-            "name": "butter",
-            "quantity": 20,
-            "unit": "g",
-            "necessary": "0"
-        }
-    ],
-    "author": "David Pokorák"
-  },
-  {
-    "id": "5",
-    "name": "carbonara",
-    "difficulty": 1,
-    "duration": "20",
-    "price": 2,
-    "description": "Cook spaghetti in a large pot of salted boiling water until al dente. In a bowl, whisk together eggs, grated Parmesan cheese and a pinch of salt. Heat pan over high heat. Add diced bacon and cook until crispy. Add the drained spaghetti to the pan with bacon and add mixture of eggs and parmesan. Toss vigorously to create a creamy sauce. Serve immediately, garnished with additional Parmesan.",
-    "country": "it",
-    "dish_category": [3],
-    "recipe_category": [6],
-    "tolerance": [4,5],
-    "ingredient": [
-        {
-          "id": "15",
-          "name": "spaghetti",
-          "quantity": 100,
-          "unit": "g",
-          "necessary": "1"
-        },
-        {
-            "id": "16",
-            "name": "egg",
-            "quantity": 2,
-            "unit": "pc",
-            "necessary": "1"
-        },
-        {
-          "id": "17",
-          "name": "bacon",
-          "quantity": 100,
-          "unit": "g",
-          "necessary": "1"
-        },
-        {
-        "id": "18",
-        "name": "parmesan",
-        "quantity": 80,
-        "unit": "g",
-        "necessary": "1"
-        },
-        {
-          "id": "14",
-          "name": "salt",
-          "quantity": 5,
-          "unit": "g",
-          "necessary": "1"
-        }
-    ],
-    "author": "David Pokorák"
-  },
-  {
-    "id": "4",
-    "name": "chicken broth",
-    "difficulty": 2,
-    "duration": "130",
-    "price": 1,
-    "description": "Add the chicken carcass and water in a large pot. Slowly bring to boil. Meanwhile peel carrot, parsley and celery.When boiling and peeled vegetables and salt. Simmer for 2 hours. After that strain the broth through a fine mesh sieve or cheesecloth into a clean pot. And eat.",
-    "country": "fr",
-    "dish_category": [2],
-    "recipe_category": [1],
-    "tolerance": [],
-    "ingredient": [
-        {
-          "id": "10",
-          "name": "chicken carcass",
-          "quantity": 1,
-          "unit": "pc",
-          "necessary": "1"
-        },
-        {
-            "id": "11",
-            "name": "carrot",
-            "quantity": 1,
-            "unit": "pc",
-            "necessary": "1"
-        },
-        {
-            "id": "12",
-            "name": "celery",
-            "quantity": 0.25,
-            "unit": "pc",
-            "necessary": "1"
-        },
-        {
-            "id": "13",
-            "name": "parsley",
-            "quantity": 1,
-            "unit": "pc",
-            "necessary": "1"
-        },
-        {
-          "id": "14",
-          "name": "salt",
-          "quantity": 10,
-          "unit": "g",
-          "necessary": "1"
-        },
-        {
-        "id": "1",
-        "name": "water",
-        "quantity": 1.5,
-        "unit": "l",
-        "necessary": "1"
-        }
-    ],
-    "author": "David Pokorák"
-  },
-  {
-    "id": "3",
-    "name": "oatmeal breakfast",
-    "difficulty": 1,
-    "duration": "10",
-    "price": 1,
-    "description": "Put milk into a pot. Cook over medium heat until it has nearly boiling temperature. After that put oats into pot. With constant stirring cook for 4 minutes. Let rest until it room temperature. Finally you can top it with sliced banana and spoon of honey.",
-    "country": "gr",
-    "dish_category": [1],
-    "recipe_category": [8],
-    "tolerance": [5],
-    "ingredient": [
-        {
-          "id": "6",
-          "name": "oats",
-          "quantity": 120,
-          "unit": "g",
-          "necessary": "1"
-        },
-        {
-            "id": "8",
-            "name": "honey",
-            "quantity": 10,
-            "unit": "g",
-            "necessary": "0"
-        },
-        {
-          "id": "3",
-          "name": "banana",
-          "quantity": 0.5,
-          "unit": "pc",
-          "necessary": "0"
-        },
-        {
-        "id": "4",
-        "name": "milk",
-        "quantity": 0.100,
-        "unit": "l",
-        "necessary": "1"
-        }
-    ],
-    "author": "David Pokorák"
-  },
-  {
-    "id": "7",
-    "name": "cheese and ham sandwich",
-    "difficulty": 1,
-    "duration": "5",
-    "price": 1,
-    "description": "Spread a thin layer of softened butter on one side of each bread slice. Place ham slices and cheese slices on the buttered side of the bread slice optionally add lettuce leaves.Press the sandwiches gently and cut them in half.",
-    "country": "uk",
-    "dish_category": [5],
-    "recipe_category": [2],
-    "tolerance": [4,5],
-    "ingredient": [
-        {
-          "id": "21",
-          "name": "bread",
-          "quantity": 0.2,
-          "unit": "pc",
-          "necessary": "1"
-        },
-        {
-            "id": "22",
-            "name": "ham",
-            "quantity": 50,
-            "unit": "g",
-            "necessary": "1"
-        },
-        {
-          "id": "23",
-          "name": "cheese",
-          "quantity": 25,
-          "unit": "g",
-          "necessary": "1"
-        },
-        {
-            "id": "20",
-            "name": "butter",
-            "quantity": 20,
-            "unit": "g",
-            "necessary": "1"
-        },
-        {
-          "id": "24",
-          "name": "lettuce leaves",
-          "quantity": 2,
-          "unit": "pc",
-          "necessary": "0"
-        }
-    ],
-    "author": "David Pokorák"
-  }
-  
+	{
+		"id": "1",
+		"name": "water",
+		"difficulty": 1,
+		"duration": "1",
+		"price": 1,
+		"description": "test.",
+		"country": "xd",
+		"dish_category": [1],
+		"recipe_category": [1],
+		"tolerance": [1],
+		"ingredient": [
+			{
+				"id": "1",
+				"name": "water",
+				"quantity": 1,
+				"unit": "g",
+				"necessary": "1"
+			}
+		]
+	},
+	{
+		"id": "6",
+		"name": "crepes",
+		"difficulty": 1,
+		"duration": "30",
+		"price": 1,
+		"description": "In a blender, combine all-purpose flour, milk, eggs and salt until smooth. Let the batter rest for at least 10 minutes Heat a crepe pan over medium heat. Lightly grease with butter. Pour a small amount of batter into the center of the pan, swirling it to spread thinly and evenly. Cook for about 1-2 minutes until the edges start to lift and the bottom is golden brown. Flip and cook the other side briefly. Repeat with the remaining batter, stacking cooked crepes on a plate. Fill crepes with your favorite sweet or savory toppings, fold or roll, and serve warm.",
+		"country": "fr",
+		"dish_category": [4],
+		"recipe_category": [8],
+		"tolerance": [4, 5],
+		"ingredient": [
+			{
+				"id": "19",
+				"name": "all-purpose flour",
+				"quantity": 100,
+				"unit": "g",
+				"necessary": "1"
+			},
+			{
+				"id": "16",
+				"name": "egg",
+				"quantity": 1,
+				"unit": "pc",
+				"necessary": "1"
+			},
+			{
+				"id": "3",
+				"name": "banana",
+				"quantity": 0.5,
+				"unit": "pc",
+				"necessary": "0"
+			},
+			{
+				"id": "4",
+				"name": "milk",
+				"quantity": 0.2,
+				"unit": "l",
+				"necessary": "1"
+			},
+			{
+				"id": "14",
+				"name": "salt",
+				"quantity": 0.5,
+				"unit": "g",
+				"necessary": "1"
+			},
+			{
+				"id": "20",
+				"name": "butter",
+				"quantity": 20,
+				"unit": "g",
+				"necessary": "0"
+			}
+		],
+		"author": "David Pokorák"
+	},
+	{
+		"id": "5",
+		"name": "carbonara",
+		"difficulty": 1,
+		"duration": "20",
+		"price": 2,
+		"description": "Cook spaghetti in a large pot of salted boiling water until al dente. In a bowl, whisk together eggs, grated Parmesan cheese and a pinch of salt. Heat pan over high heat. Add diced bacon and cook until crispy. Add the drained spaghetti to the pan with bacon and add mixture of eggs and parmesan. Toss vigorously to create a creamy sauce. Serve immediately, garnished with additional Parmesan.",
+		"country": "it",
+		"dish_category": [3],
+		"recipe_category": [6],
+		"tolerance": [4, 5],
+		"ingredient": [
+			{
+				"id": "15",
+				"name": "spaghetti",
+				"quantity": 100,
+				"unit": "g",
+				"necessary": "1"
+			},
+			{
+				"id": "16",
+				"name": "egg",
+				"quantity": 2,
+				"unit": "pc",
+				"necessary": "1"
+			},
+			{
+				"id": "17",
+				"name": "bacon",
+				"quantity": 100,
+				"unit": "g",
+				"necessary": "1"
+			},
+			{
+				"id": "18",
+				"name": "parmesan",
+				"quantity": 80,
+				"unit": "g",
+				"necessary": "1"
+			},
+			{
+				"id": "14",
+				"name": "salt",
+				"quantity": 5,
+				"unit": "g",
+				"necessary": "1"
+			}
+		],
+		"author": "David Pokorák"
+	},
+	{
+		"id": "4",
+		"name": "chicken broth",
+		"difficulty": 2,
+		"duration": "130",
+		"price": 1,
+		"description": "Add the chicken carcass and water in a large pot. Slowly bring to boil. Meanwhile peel carrot, parsley and celery.When boiling and peeled vegetables and salt. Simmer for 2 hours. After that strain the broth through a fine mesh sieve or cheesecloth into a clean pot. And eat.",
+		"country": "fr",
+		"dish_category": [2],
+		"recipe_category": [1],
+		"tolerance": [],
+		"ingredient": [
+			{
+				"id": "10",
+				"name": "chicken carcass",
+				"quantity": 1,
+				"unit": "pc",
+				"necessary": "1"
+			},
+			{
+				"id": "11",
+				"name": "carrot",
+				"quantity": 1,
+				"unit": "pc",
+				"necessary": "1"
+			},
+			{
+				"id": "12",
+				"name": "celery",
+				"quantity": 0.25,
+				"unit": "pc",
+				"necessary": "1"
+			},
+			{
+				"id": "13",
+				"name": "parsley",
+				"quantity": 1,
+				"unit": "pc",
+				"necessary": "1"
+			},
+			{
+				"id": "14",
+				"name": "salt",
+				"quantity": 10,
+				"unit": "g",
+				"necessary": "1"
+			},
+			{
+				"id": "1",
+				"name": "water",
+				"quantity": 1.5,
+				"unit": "l",
+				"necessary": "1"
+			}
+		],
+		"author": "David Pokorák"
+	},
+	{
+		"id": "3",
+		"name": "oatmeal breakfast",
+		"difficulty": 1,
+		"duration": "10",
+		"price": 1,
+		"description": "Put milk into a pot. Cook over medium heat until it has nearly boiling temperature. After that put oats into pot. With constant stirring cook for 4 minutes. Let rest until it room temperature. Finally you can top it with sliced banana and spoon of honey.",
+		"country": "gr",
+		"dish_category": [1],
+		"recipe_category": [8],
+		"tolerance": [5],
+		"ingredient": [
+			{
+				"id": "6",
+				"name": "oats",
+				"quantity": 120,
+				"unit": "g",
+				"necessary": "1"
+			},
+			{
+				"id": "8",
+				"name": "honey",
+				"quantity": 10,
+				"unit": "g",
+				"necessary": "0"
+			},
+			{
+				"id": "3",
+				"name": "banana",
+				"quantity": 0.5,
+				"unit": "pc",
+				"necessary": "0"
+			},
+			{
+				"id": "4",
+				"name": "milk",
+				"quantity": 0.1,
+				"unit": "l",
+				"necessary": "1"
+			}
+		],
+		"author": "David Pokorák"
+	},
+	{
+		"id": "7",
+		"name": "cheese and ham sandwich",
+		"difficulty": 1,
+		"duration": "5",
+		"price": 1,
+		"description": "Spread a thin layer of softened butter on one side of each bread slice. Place ham slices and cheese slices on the buttered side of the bread slice optionally add lettuce leaves.Press the sandwiches gently and cut them in half.",
+		"country": "uk",
+		"dish_category": [5],
+		"recipe_category": [2],
+		"tolerance": [4, 5],
+		"ingredient": [
+			{
+				"id": "21",
+				"name": "bread",
+				"quantity": 0.2,
+				"unit": "pc",
+				"necessary": "1"
+			},
+			{
+				"id": "22",
+				"name": "ham",
+				"quantity": 50,
+				"unit": "g",
+				"necessary": "1"
+			},
+			{
+				"id": "23",
+				"name": "cheese",
+				"quantity": 25,
+				"unit": "g",
+				"necessary": "1"
+			},
+			{
+				"id": "20",
+				"name": "butter",
+				"quantity": 20,
+				"unit": "g",
+				"necessary": "1"
+			},
+			{
+				"id": "24",
+				"name": "lettuce leaves",
+				"quantity": 2,
+				"unit": "pc",
+				"necessary": "0"
+			}
+		],
+		"author": "David Pokorák"
+	}
 ]
