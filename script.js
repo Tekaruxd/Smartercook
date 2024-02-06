@@ -38,40 +38,16 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	// Funkce pro načtení receptů a jejich zobrazení
+	// Funkce pro načtení receptů a jejich zobrazení
 	function displayRecipes() {
 		// Vyprázdnit seznam receptů před aktualizací
 		recipeList.innerHTML = "";
-
 		// Načtení receptů z JSON souboru
 		fetch("recepty.json")
 			.then((response) => response.json())
 			.then((data) => {
-				// Filtrace receptů podle zvolených filtrů
-				const filteredRecipes = data.filter((recipe) => {
-					let includeRecipe = true; // Předpokládáme, že recept bude zahrnut
-
-					for (const key in filters) {
-						if (filters[key] !== "" && key in recipe) {
-							// Pokud je klíč v receptu a nebyl vybrán prázdný filtr
-							if (Array.isArray(recipe[key])) {
-								// Pokud se jedná o pole (např. recipe_category, tolerance), porovnáme hodnoty
-								if (!recipe[key].includes(parseInt(filters[key]))) {
-									// Pokud hodnota filtru není obsažena v poli receptu, vyloučíme recept
-									includeRecipe = false;
-									break;
-								}
-							} else {
-								// Pokud se nejedná o pole, porovnáme přímo hodnoty
-								if (recipe[key] !== filters[key]) {
-									// Pokud hodnoty nejsou shodné, vyloučíme recept
-									includeRecipe = false;
-									break;
-								}
-							}
-						}
-					}
-					return includeRecipe;
-				});
+				// Filtrace receptů pouze pokud jsou zadány nějaké filtry
+				const filteredRecipes = filtersExist() ? filterRecipes(data) : data;
 
 				// Zobrazení filtrovaných receptů na stránce
 				filteredRecipes.forEach((recipe) => {
@@ -89,6 +65,45 @@ document.addEventListener("DOMContentLoaded", function () {
 			.catch((error) => console.log("Chyba při načítání receptů:", error));
 	}
 
+	// Funkce pro ověření existence filtrů
+	function filtersExist() {
+		for (const key in filters) {
+			if (filters[key] !== "") {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	// Funkce pro filtrování receptů
+	function filterRecipes(data) {
+		return data.filter((recipe) => {
+			let includeRecipe = true; // Předpokládáme, že recept bude zahrnut
+
+			for (const key in filters) {
+				if (filters[key] !== "" && key in recipe) {
+					// Pokud je klíč v receptu a nebyl vybrán prázdný filtr
+					if (Array.isArray(recipe[key])) {
+						// Pokud se jedná o pole (např. recipe_category, tolerance), porovnáme hodnoty
+						if (!recipe[key].includes(parseInt(filters[key]))) {
+							// Pokud hodnota filtru není obsažena v poli receptu, vyloučíme recept
+							includeRecipe = false;
+							break;
+						}
+					} else {
+						// Pokud se nejedná o pole, porovnáme přímo hodnoty
+						if (recipe[key] !== filters[key]) {
+							// Pokud hodnoty nejsou shodné, vyloučíme recept
+							includeRecipe = false;
+							break;
+						}
+					}
+				}
+			}
+			return includeRecipe;
+		});
+	}
+
 	// Obsluha formuláře pro filtrování
 	filterForm.addEventListener("submit", function (event) {
 		event.preventDefault(); // Zabránit výchozímu chování formuláře
@@ -101,11 +116,9 @@ document.addEventListener("DOMContentLoaded", function () {
 			tolerance: tolerance.value,
 		};
 
-		displayRecipes(); // Zobrazit recepty podle zvolených filtrů
+		displayRecipes();
 	});
 
-	// Načtení filtrů ze souboru při načtení stránky
-	loadFilters();
-	// Načtení receptů při načtení stránky
 	displayRecipes(); // Zobrazit všechny recepty při prvním načtení stránky
+	loadFilters(); // Načtení receptů při načtení stránky
 });

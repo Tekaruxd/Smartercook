@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>SmartCook - Recepty</title>
-		<link rel="stylesheet" href="styles.css" />
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="SmartCook - Recepty pro vaření podle vašich preferencí." />
+    <meta name="keywords" content="SmartCook, recepty, vaření, preference, jídlo" />
+    <meta name="author" content="SmartCook Erasmus+" />
+    <title>SmartCook - Recepty</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
 	</head>
 	<body>
 		<header>
@@ -12,16 +16,17 @@
 			<nav>
 				<ul>
 					<li><a href="index.html">Domů</a></li>
-					<li><a href="#">Zadat preference</a></li>
-					<li><a href="#">Vygenerované recepty</a></li>
-					<li><a href="#">Nákupní seznam</a></li>
+					<li><a href="#">Zadat preference</a></li>
+					<li><a href="#">Vygenerované recepty</a></li>
+					<li><a href="#">Nákupní seznam</a></li>
 				</ul>
 			</nav>
 		</header>
 		<main>
 			<div id="filters" class="filters">
 				<h2>Filtry</h2>
-				<form id="filterForm">
+				<form id="filterForm" class="filter-form">
+					<div class="form-flex">
 					<div class="filter-group">
 						<label for="dish_category">Druh pokrmu:</label>
 						<select id="dish_category" name="dish_category">
@@ -57,6 +62,7 @@
 							<!-- Doplnění možností pomocí JavaScriptu -->
 						</select>
 					</div>
+				</div>
 					<button type="submit">Filtrovat</button>
 				</form>
 			</div>

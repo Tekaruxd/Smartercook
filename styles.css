@@ -6,31 +6,33 @@ body {
 
 header {
 	background-color: #376337;
-	padding: 20px;
+	padding: 0.75rem;
 	text-align: center;
 }
 
 nav ul {
+	margin: 0.5rem;
+	display: flex;
+	justify-content: center;
 	list-style-type: none;
 	padding: 0;
+	flex-wrap: wrap;
+	gap: 0.5rem;
 }
 
 nav ul li {
-	display: inline;
-	margin-right: 20px;
+	background: #333;
+	padding: 0.5rem;
+	border-radius: 0.4rem;
 }
 
 nav ul li a {
 	text-decoration: none;
 	color: #ebece3;
-	font-size: large;
-	background: #333;
-	padding: 7px;
-	border-radius: 5px;
 }
 
 main {
-	padding: 20px;
+	padding: 1rem;
 	background-color: #b8cab8;
 }
 
@@ -38,44 +40,68 @@ main {
 	text-align: center;
 }
 
-footer {
-	background-color: #333;
+select {
+	padding: 0.25rem;
+	border: 1px solid #ccc;
+	border-radius: 0.4rem;
+	cursor: pointer;
+	transition: border-color 0.3s;
+}
+
+select:hover {
+	border-color: #707070;
+}
+button[type="submit"] {
+	background-color: #376337;
 	color: #fff;
-	text-align: center;
-	padding: 10px 0;
+	margin: 0 0.5rem;
+	padding: 0.6rem 1.2rem;
+	border: none;
+	border-radius: 0.4rem;
+	cursor: pointer;
+	transition: background-color 0.3s;
 }
 
-.filter-label {
-	margin-right: 10px;
+button[type="submit"]:hover {
+	background-color: #167a16;
 }
-
+.filter-group {
+	margin: 0.5rem;
+}
+.form-flex {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
 .filters {
 	background-color: #ebece3;
-	width: auto;
-	padding: 20px;
-	margin-bottom: 20px;
-	border-radius: 5px;
-	border: 2px solid #a8a8a6;
+	padding: 1rem;
+	margin-bottom: 1rem;
+	border-radius: 0.4rem;
+	border: 0.2rem solid #a8a8a6;
 }
-
+.filters h2 {
+	margin: 0.5rem 0;
+}
 .recipe-container {
 	flex-grow: 1;
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	grid-gap: 20px;
+	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+	grid-gap: 0.75rem;
 }
 
 .recipe {
-	border: 2px solid #a8a8a6;
-	border-radius: 5px;
-	padding: 10px;
+	border: 0.2rem solid #a8a8a6;
+	border-radius: 0.4rem;
+	padding: 1rem;
 	background-color: #ebece3;
 }
+
 .recipe h3 {
+	text-transform: capitalize;
 	margin-top: 0;
 	color: #333;
-
-	border-radius: 5px;
+	border-radius: 0.4rem;
 	width: auto;
 }
 
@@ -84,16 +110,11 @@ footer {
 	color: #444;
 }
 
-@media (max-width: 768px) {
-	.recipe-container {
-		grid-template-columns: repeat(2, 1fr);
-	}
-}
-
-@media (max-width: 480px) {
-	.recipe-container {
-		grid-template-columns: repeat(1, 1fr);
-	}
+footer {
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	padding: 0.7rem 0;
 }
 
 /*
