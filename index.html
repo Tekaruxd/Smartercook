@@ -3,10 +3,16 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="description" content="SmartCook - Recepty pro vaření podle vašich preferencí."/>
-		<meta name="keywords" content="SmartCook, recepty, vaření, preference, jídlo"/>
+		<meta
+			name="description"
+			content="SmartCook - Recipes for cooking according to your preferences."
+		/>
+		<meta
+			name="keywords"
+			content="SmartCook, recipes, cooking, preferences, food"
+		/>
 		<meta name="author" content="SmartCook Erasmus+" />
-		<title>SmartCook - Recepty</title>
+		<title>SmartCook - Recipes</title>
 		<link rel="stylesheet" href="styles.css" />
 	</head>
 
@@ -15,59 +21,60 @@
 			<h1>SmartCook</h1>
 			<nav>
 				<ul>
-					<li><a href="index.html">Domů</a></li>
-					<li><a href="#">Zadat preference</a></li>
-					<li><a href="#">Vygenerované recepty</a></li>
-					<li><a href="#">Nákupní seznam</a></li>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="#">Set Preferences</a></li>
+					<li><a href="#">Generated Recipes</a></li>
+					<li><a href="#">Shopping List</a></li>
 				</ul>
 			</nav>
 		</header>
 		<main>
 			<div id="filters" class="filters">
-				<h2>Filtry</h2>
+				<h2>Filters</h2>
 				<form id="filterForm" class="filter-form">
 					<div class="form-flex">
 						<div class="filter-group">
-							<label for="dish_category">Druh pokrmu:</label>
+							<label for="dish_category">Dish Type:</label>
 							<select id="dish_category" name="dish_category">
-								<option value="">Všechny</option>
-								<!-- Doplnění možností pomocí JavaScriptu -->
+								<!-- Options added using JS -->
 							</select>
 						</div>
 						<div class="filter-group">
-							<label for="recipe_category">Kategorie receptu:</label>
+							<label for="recipe_category">Recipe Category:</label>
 							<select id="recipe_category" name="recipe_category">
-								<option value="">Všechny</option>
-								<!-- Doplnění možností pomocí JavaScriptu -->
+								<!-- Options added using JS -->
 							</select>
 						</div>
 						<div class="filter-group">
-							<label for="difficulty">Náročnost:</label>
+							<label for="difficulty">Difficulty:</label>
 							<select id="difficulty" name="difficulty">
-								<option value="">Nezáleží</option>
-								<!-- Doplnění možností pomocí JavaScriptu -->
+								<!-- Options added using JS -->
 							</select>
 						</div>
 						<div class="filter-group">
-							<label for="price">Cena:</label>
+							<label for="price">Price:</label>
 							<select id="price" name="price">
-								<option value="">Nezáleží</option>
-								<!-- Doplnění možností pomocí JavaScriptu -->
+								<!-- Options added using JS -->
 							</select>
 						</div>
 						<div class="filter-group">
-							<label for="tolerance">Alergeny:</label>
+							<label for="unit">Allergens:</label>
+							<select id="unit" name="unit">
+								<!-- Options added using JS -->
+							</select>
+						</div>
+						<div class="filter-group">
+							<label for="tolerance">Allergens:</label>
 							<select id="tolerance" name="tolerance">
-								<option value="">Bez alergenů</option>
-								<!-- Doplnění možností pomocí JavaScriptu -->
+								<!-- Options added using JS -->
 							</select>
 						</div>
 					</div>
-					<button type="submit">Filtrovat</button>
+					<button type="submit">Filter</button>
 				</form>
 			</div>
 			<div id="recipeList" class="recipe-container">
-				<!-- Sem budou vloženy recepty -->
+				<!-- Recipes -->
 			</div>
 		</main>
 		<footer>

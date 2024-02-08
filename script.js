@@ -1,33 +1,33 @@
 document.addEventListener("DOMContentLoaded", function () {
 	const recipeList = document.getElementById("recipeList");
 	const filterForm = document.getElementById("filterForm");
-	let filters = {}; // Objekt pro uchování načtených filtrů
+	let filters = {}; // Object to store loaded filters
 
-	// Funkce pro načtení filtrů ze souboru filtry.json
+	// Function to load filters from filters.json file
 	function loadFilters() {
-		fetch("filtry.json")
+		fetch("filters.json")
 			.then((response) => response.json())
 			.then((data) => {
-				filters = data; // Uložení načtených filtrů do globální proměnné
-				// Aktualizace rozbalovacích seznamů s filtry
+				filters = data; // Save loaded filters to the global variable
+				// Update filter selects
 				updateFilterSelects();
 			})
-			.catch((error) => console.log("Chyba při načítání filtrů:", error));
+			.catch((error) => console.log("Error loading filters:", error));
 	}
 
-	// Funkce pro aktualizaci rozbalovacích seznamů s filtry
+	// Function to update filter selects
 	function updateFilterSelects() {
 		for (const key in filters) {
 			const selectElement = document.getElementById(key);
-			selectElement.innerHTML = ""; // Vyprázdnění obsahu rozbalovacího seznamu
+			selectElement.innerHTML = ""; // Clear select element content
 
-			// Přidání možností do rozbalovacího seznamu
+			// Add default option to select
 			const defaultOption = document.createElement("option");
 			defaultOption.value = "";
-			defaultOption.textContent = "Všechny";
+			defaultOption.textContent = "All";
 			selectElement.appendChild(defaultOption);
 
-			// Přidání možností z načtených filtrů
+			// Add options from loaded filters
 			for (const value in filters[key]) {
 				const option = document.createElement("option");
 				option.value = value;
@@ -37,19 +37,18 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 	}
 
-	// Funkce pro načtení receptů a jejich zobrazení
-	// Funkce pro načtení receptů a jejich zobrazení
+	// Function to display recipes
 	function displayRecipes() {
-		// Vyprázdnit seznam receptů před aktualizací
+		// Clear recipe list before updating
 		recipeList.innerHTML = "";
-		// Načtení receptů z JSON souboru
-		fetch("recepty.json")
+		// Load recipes from JSON file
+		fetch("recipes.json")
 			.then((response) => response.json())
 			.then((data) => {
-				// Filtrace receptů pouze pokud jsou zadány nějaké filtry
+				// Filter recipes only if there are some filters applied
 				const filteredRecipes = filtersExist() ? filterRecipes(data) : data;
 
-				// Zobrazení filtrovaných receptů na stránce
+				// Display filtered recipes on the page
 				filteredRecipes.forEach((recipe) => {
 					const recipeItem = document.createElement("div");
 					recipeItem.classList.add("recipe");
@@ -57,15 +56,14 @@ document.addEventListener("DOMContentLoaded", function () {
                           <h3>${recipe.name}</h3>
                           <p>${recipe.dish_category}</p>
                           <p>${recipe.description}</p>
-
                       `;
 					recipeList.appendChild(recipeItem);
 				});
 			})
-			.catch((error) => console.log("Chyba při načítání receptů:", error));
+			.catch((error) => console.log("Error loading recipes:", error));
 	}
 
-	// Funkce pro ověření existence filtrů
+	// Function to check if filters exist
 	function filtersExist() {
 		for (const key in filters) {
 			if (filters[key] !== "") {
@@ -75,25 +73,25 @@ document.addEventListener("DOMContentLoaded", function () {
 		return false;
 	}
 
-	// Funkce pro filtrování receptů
+	// Function to filter recipes
 	function filterRecipes(data) {
 		return data.filter((recipe) => {
-			let includeRecipe = true; // Předpokládáme, že recept bude zahrnut
+			let includeRecipe = true; // Assume recipe will be included
 
 			for (const key in filters) {
 				if (filters[key] !== "" && key in recipe) {
-					// Pokud je klíč v receptu a nebyl vybrán prázdný filtr
+					// If key is in recipe and filter is not empty
 					if (Array.isArray(recipe[key])) {
-						// Pokud se jedná o pole (např. recipe_category, tolerance), porovnáme hodnoty
+						// If it's an array (e.g., recipe_category, tolerance), compare values
 						if (!recipe[key].includes(parseInt(filters[key]))) {
-							// Pokud hodnota filtru není obsažena v poli receptu, vyloučíme recept
+							// If filter value is not in recipe array, exclude recipe
 							includeRecipe = false;
 							break;
 						}
 					} else {
-						// Pokud se nejedná o pole, porovnáme přímo hodnoty
+						// If it's not an array, compare values directly
 						if (recipe[key] !== filters[key]) {
-							// Pokud hodnoty nejsou shodné, vyloučíme recept
+							// If values are not the same, exclude recipe
 							includeRecipe = false;
 							break;
 						}
@@ -104,14 +102,15 @@ document.addEventListener("DOMContentLoaded", function () {
 		});
 	}
 
-	// Obsluha formuláře pro filtrování
+	// Handle form submission for filtering
 	filterForm.addEventListener("submit", function (event) {
-		event.preventDefault(); // Zabránit výchozímu chování formuláře
-		// Načtení hodnot filtrů ze vstupů formuláře
+		event.preventDefault(); // Prevent default form behavior
+		// Load filter values from form inputs
 		filters = {
 			dish_category: dish_category.value,
 			recipe_category: recipe_category.value,
 			difficulty: difficulty.value,
+			unit: unit.value,
 			price: price.value,
 			tolerance: tolerance.value,
 		};
@@ -119,6 +118,6 @@ document.addEventListener("DOMContentLoaded", function () {
 		displayRecipes();
 	});
 
-	displayRecipes(); // Zobrazit všechny recepty při prvním načtení stránky
-	loadFilters(); // Načtení receptů při načtení stránky
+	displayRecipes(); // Display all recipes on initial page load
+	loadFilters(); // Load filters on page load
 });
