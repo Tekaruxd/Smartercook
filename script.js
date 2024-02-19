@@ -2,6 +2,25 @@ document.addEventListener("DOMContentLoaded", function () {
 	const recipeList = document.getElementById("recipeList");
 	const filterForm = document.getElementById("filterForm");
 	let filters = {}; // Object to store loaded filters
+	// Funkce pro skrytí/otevření formuláře
+	function toggleFilters() {
+		if (filterForm.classList.contains("hidden")) {
+			filterForm.classList.remove("hidden");
+		} else {
+			filterForm.classList.add("hidden");
+		}
+	}
+
+	// Přidání posluchače události na kliknutí na nadpis H2 "Filters"
+	document.getElementById("filtrhide").addEventListener("click", function () {
+		toggleFilters(); // Zavolání funkce pro skrytí/otevření formuláře
+	});
+
+	document
+		.getElementById("darkModeToggle")
+		.addEventListener("click", function () {
+			document.body.classList.toggle("dark-mode");
+		});
 
 	// Function to load filters from filters.json file
 	function loadFilters() {

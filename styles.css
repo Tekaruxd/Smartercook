@@ -2,10 +2,45 @@ body {
 	font-family: Arial, sans-serif;
 	margin: 0;
 	padding: 0;
+	background: linear-gradient(
+		90deg,
+		rgba(55, 99, 55, 1) 10%,
+		rgba(184, 202, 184, 1) 50%,
+		rgba(55, 99, 55, 1) 90%
+	);
+}
+.dark {
+	position: absolute;
+	top: 1rem;
+	right: 0;
+	padding: 10px;
+	background: #000;
+}
+.dark-mode .dark {
+	background: #fff;
+	color: #000;
+}
+.dark-mode {
+	background: linear-gradient(
+		90deg,
+		rgba(55, 99, 55, 1) 10%,
+		rgba(0, 0, 0, 1) 50%,
+		rgba(55, 99, 55, 1) 90%
+	);
+	color: #fff;
+}
+
+.dark-mode main .filters,
+.dark-mode main .recipe-container .recipe {
+	background: #23241e;
+}
+
+.dark-mode main .recipe-container .recipe h3,
+.dark-mode main .recipe-container .recipe p {
+	color: inherit;
 }
 
 header {
-	background-color: #376337;
 	padding: 0.75rem;
 	text-align: center;
 }
@@ -21,19 +56,17 @@ nav ul {
 }
 
 nav ul li {
-	background: #333;
 	padding: 0.5rem;
 	border-radius: 0.4rem;
 }
 
 nav ul li a {
 	text-decoration: none;
-	color: #ebece3;
+	color: inherit;
 }
 
 main {
 	padding: 1rem;
-	background-color: #b8cab8;
 }
 
 .welcome {
@@ -51,7 +84,7 @@ select {
 select:hover {
 	border-color: #707070;
 }
-button[type="submit"] {
+button {
 	background-color: #376337;
 	color: #fff;
 	margin: 0 0.5rem;
@@ -62,11 +95,11 @@ button[type="submit"] {
 	transition: background-color 0.3s;
 }
 
-button[type="submit"]:hover {
+button:hover {
 	background-color: #167a16;
 }
-.filter-group {
-	margin: 0.5rem;
+.form-flex {
+	margin-bottom: 0.5rem;
 }
 .form-flex {
 	display: flex;
@@ -78,10 +111,9 @@ button[type="submit"]:hover {
 	padding: 1rem;
 	margin-bottom: 1rem;
 	border-radius: 0.4rem;
-	border: 0.2rem solid #a8a8a6;
 }
-.filters h2 {
-	margin: 0.5rem 0;
+.filters h3 {
+	margin: 0.3rem 0;
 }
 .recipe-container {
 	flex-grow: 1;
@@ -91,7 +123,6 @@ button[type="submit"]:hover {
 }
 
 .recipe {
-	border: 0.2rem solid #a8a8a6;
 	border-radius: 0.4rem;
 	padding: 1rem;
 	background-color: #ebece3;
@@ -116,7 +147,9 @@ footer {
 	text-align: center;
 	padding: 0.7rem 0;
 }
-
+.hidden {
+	display: none;
+}
 /*
  colors: #376337,#b8cab8,#ebece3,#a8a8a6,#444,#333
 */
