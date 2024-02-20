@@ -1,9 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
 	const recipeList = document.getElementById("recipeList");
 	const filterForm = document.getElementById("filterForm");
+	let loaded_filterz = {};
 	let filters = {}; // Object to store loaded filters
 	// Funkce pro skrytí/otevření formuláře
-	function toggleFilters() {
+	function toggleCssFilters() {
 		if (filterForm.classList.contains("hidden")) {
 			filterForm.classList.remove("hidden");
 		} else {
@@ -13,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	// Přidání posluchače události na kliknutí na nadpis H2 "Filters"
 	document.getElementById("filtrhide").addEventListener("click", function () {
-		toggleFilters(); // Zavolání funkce pro skrytí/otevření formuláře
+		toggleCssFilters(); // Zavolání funkce pro skrytí/otevření formuláře
 	});
 
 	document
@@ -27,6 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
 		fetch("filters.json")
 			.then((response) => response.json())
 			.then((data) => {
+				loaded_filterz = data;
+
 				filters = data; // Save loaded filters to the global variable
 				// Update filter selects
 				updateFilterSelects();
@@ -36,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	// Function to update filter selects
 	function updateFilterSelects() {
-		for (const key in filters) {
+		for (const key in loaded_filterz) {
 			const selectElement = document.getElementById(key);
 			selectElement.innerHTML = ""; // Clear select element content
 
@@ -47,10 +50,10 @@ document.addEventListener("DOMContentLoaded", function () {
 			selectElement.appendChild(defaultOption);
 
 			// Add options from loaded filters
-			for (const value in filters[key]) {
+			for (const value in loaded_filterz[key]) {
 				const option = document.createElement("option");
 				option.value = value;
-				option.textContent = filters[key][value];
+				option.textContent = loaded_filterz[key][value];
 				selectElement.appendChild(option);
 			}
 		}
@@ -60,7 +63,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	function displayRecipes() {
 		// Clear recipe list before updating
 		recipeList.innerHTML = "";
-		// Load recipes from JSON file
 		fetch("recipes.json")
 			.then((response) => response.json())
 			.then((data) => {
@@ -71,11 +73,14 @@ document.addEventListener("DOMContentLoaded", function () {
 				filteredRecipes.forEach((recipe) => {
 					const recipeItem = document.createElement("div");
 					recipeItem.classList.add("recipe");
+					// prettier-ignore
 					recipeItem.innerHTML = `
-                          <h3>${recipe.name}</h3>
-                          <p>${recipe.dish_category}</p>
-                          <p>${recipe.description}</p>
-                      `;
+                      <h3>${recipe.name}</h3>
+                      <p>Dish category: ${loaded_filterz.dish_category[recipe.dish_category.toString()]}</p>
+                      <p>Recipe category: ${loaded_filterz.recipe_category[recipe.recipe_category.toString()]}</p>
+                      <p>Difficulty: ${loaded_filterz.difficulty[recipe.difficulty.toString()]}</p>
+                      <p>${recipe.description}</p>
+                  `;
 					recipeList.appendChild(recipeItem);
 				});
 			})
@@ -133,10 +138,9 @@ document.addEventListener("DOMContentLoaded", function () {
 			price: price.value,
 			tolerance: tolerance.value,
 		};
-
 		displayRecipes();
 	});
 
+	loadFilters();
 	displayRecipes(); // Display all recipes on initial page load
-	loadFilters(); // Load filters on page load
 });
