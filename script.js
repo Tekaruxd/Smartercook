@@ -58,74 +58,76 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 		}
 	}
-
-	// Function to display recipes
-	function displayRecipes() {
+	function loadAllRecipes() {
 		// Clear recipe list before updating
 		recipeList.innerHTML = "";
 		fetch("recipes.json")
 			.then((response) => response.json())
 			.then((data) => {
-				// Filter recipes only if there are some filters applied
-				const filteredRecipes = filtersExist() ? filterRecipes(data) : data;
-
-				// Display filtered recipes on the page
-				filteredRecipes.forEach((recipe) => {
+				// Display all recipes on the page
+				data.forEach((recipe) => {
 					const recipeItem = document.createElement("div");
 					recipeItem.classList.add("recipe");
 					// prettier-ignore
 					recipeItem.innerHTML = `
-                      <h3>${recipe.name}</h3>
-                      <p>Dish category: ${loaded_filterz.dish_category[recipe.dish_category.toString()]}</p>
-                      <p>Recipe category: ${loaded_filterz.recipe_category[recipe.recipe_category.toString()]}</p>
-                      <p>Difficulty: ${loaded_filterz.difficulty[recipe.difficulty.toString()]}</p>
-                      <p>${recipe.description}</p>
-                  `;
+				<h3>${recipe.name}</h3>
+				<p>Dish category: ${loaded_filterz.dish_category[recipe.dish_category.toString()]}</p>
+				<p>Recipe category: ${loaded_filterz.recipe_category[recipe.recipe_category.toString()]}</p>
+				<p>Difficulty: ${loaded_filterz.difficulty[recipe.difficulty.toString()]}</p>
+				<p>${recipe.description}</p>
+			  `;
 					recipeList.appendChild(recipeItem);
 				});
 			})
 			.catch((error) => console.log("Error loading recipes:", error));
 	}
 
-	// Function to check if filters exist
-	function filtersExist() {
-		for (const key in filters) {
-			if (filters[key] !== "") {
-				return true;
-			}
-		}
-		return false;
+	function displayRecipes() {
+		// Clear recipe list before updating
+		recipeList.innerHTML = "";
+		fetch("recipes.json")
+			.then((response) => response.json())
+			.then((data) => {
+				const filteredRecipes = applyFilters(data);
+				// Display filtered recipes on the page
+				filteredRecipes.forEach((recipe) => {
+					const recipeItem = document.createElement("div");
+					recipeItem.classList.add("recipe");
+					// prettier-ignore
+					recipeItem.innerHTML = `
+				<h3>${recipe.name}</h3>
+				<p>Dish category: ${loaded_filterz.dish_category[recipe.dish_category.toString()]}</p>
+				<p>Recipe category: ${loaded_filterz.recipe_category[recipe.recipe_category.toString()]}</p>
+				<p>Difficulty: ${loaded_filterz.difficulty[recipe.difficulty.toString()]}</p>
+				<p>${recipe.description}</p>
+			  `;
+					recipeList.appendChild(recipeItem);
+				});
+			})
+			.catch((error) => console.log("Error loading recipes:", error));
 	}
 
-	// Function to filter recipes
-	function filterRecipes(data) {
-		return data.filter((recipe) => {
-			let includeRecipe = true; // Assume recipe will be included
-
-			for (const key in filters) {
-				if (filters[key] !== "" && key in recipe) {
-					// If key is in recipe and filter is not empty
-					if (Array.isArray(recipe[key])) {
-						// If it's an array (e.g., recipe_category, tolerance), compare values
-						if (!recipe[key].includes(parseInt(filters[key]))) {
-							// If filter value is not in recipe array, exclude recipe
-							includeRecipe = false;
-							break;
-						}
-					} else {
-						// If it's not an array, compare values directly
-						if (recipe[key] !== filters[key]) {
-							// If values are not the same, exclude recipe
-							includeRecipe = false;
-							break;
-						}
-					}
-				}
-			}
-			return includeRecipe;
+	// Apply filters to recipes
+	function applyFilters(recipes) {
+		return recipes.filter((recipe) => {
+			return (
+				// Check if dish category matches
+				(!filters.dish_category ||
+					recipe.dish_category.includes(parseInt(filters.dish_category))) &&
+				// Check if recipe category matches
+				(!filters.recipe_category ||
+					recipe.recipe_category.includes(parseInt(filters.recipe_category))) &&
+				// Check if difficulty matches
+				(!filters.difficulty ||
+					recipe.difficulty == parseInt(filters.difficulty)) &&
+				// Check if price matches
+				(!filters.price || recipe.price == parseInt(filters.price)) &&
+				// Exclude recipes with specified tolerance values
+				(!filters.tolerance ||
+					!recipe.tolerance.includes(parseInt(filters.tolerance)))
+			);
 		});
 	}
-
 	// Handle form submission for filtering
 	filterForm.addEventListener("submit", function (event) {
 		event.preventDefault(); // Prevent default form behavior
@@ -142,5 +144,5 @@ document.addEventListener("DOMContentLoaded", function () {
 	});
 
 	loadFilters();
-	displayRecipes(); // Display all recipes on initial page load
+	loadAllRecipes();
 });
